@@ -12,5 +12,18 @@
     </h1>
 
     <video class="elementor-video" src="https://studioautomated.com/wp-content/uploads/2022/07/Studio-Automated_company-movie_short_subtitled.movie_.mp4" autoplay="" loop="" muted="muted" controls></video>
+
+//give me code for button when i click on it the controls on the video will be hidden
+
+    <button>Click me</button>
+
+    <script>
+        const button = document.querySelector('button');
+        const video = document.querySelector('video');
+
+        button.addEventListener('click', () => {
+            video.controls = false;
+        });
+    </script>
 </body>
 </html>
