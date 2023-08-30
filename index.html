@@ -13,7 +13,7 @@
 
     <video class="elementor-video" src="https://studioautomated.com/wp-content/uploads/2022/07/Studio-Automated_company-movie_short_subtitled.movie_.mp4" autoplay="" loop="" muted="muted" controls></video>
 
-//give me code for button when i click on it the controls on the video will be hidden
+
 
     <button>Click me</button>
 
@@ -24,6 +24,12 @@
         button.addEventListener('click', () => {
             video.controls = false;
         });
+        //when i click on the button, the video controls will be removed and click again to add the controls
+
+        video.addEventListener('mouseenter', () => {
+            video.controls = true;
+        });
+        
     </script>
 </body>
 </html>
