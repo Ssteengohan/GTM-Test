@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connect to Trust Wallet</title>
+</head>
+<body>
+    <button id="connectButton">Connect to Trust Wallet</button>
+
+    <script src="">
+        document.addEventListener("DOMContentLoaded", function() {
+    // Assuming WalletConnect is available in the global scope
+    const WalletConnectProvider = window.WalletConnectProvider.default;
+
+    // Create a WalletConnect Provider
+    const provider = new WalletConnectProvider({
+      infuraId: "YOUR_INFURA_ID" // Replace with your Infura ID
+    });
+
+    // Get the connect button
+    const connectButton = document.getElementById("connectButton");
+
+    // Add click listener
+    connectButton.addEventListener("click", async () => {
+        // Enable session (triggers QR Code modal)
+        await provider.enable();
+    });
+});
+
+    </script>
+</body>
+</html>
