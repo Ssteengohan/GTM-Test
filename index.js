@@ -52,4 +52,5 @@ async function connectWallet() {
   }
 }
 
+// Call this function when the page loads or when appropriate
 connectWallet();
