@@ -3,9 +3,12 @@ async function connectWallet() {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   if (isMobile) {
-    // Mobile logic: Use Trust Wallet deep link
-    // Redirect the user to enable the DApp browser in Trust Wallet
-    window.location.href = "https://link.trustwallet.com/browser_enable";
+    // Mobile logic: Use Trust Wallet deep link to open your DApp in the Trust Wallet browser
+    const dappUrl = "https://gleaming-kulfi-029c98.netlify.app/"; // Replace with your DApp's URL
+    const deepLink = `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(
+      dappUrl
+    )}`;
+    window.location.href = deepLink;
   } else {
     // Desktop logic: Standard Ethereum request
     if (window.ethereum) {
