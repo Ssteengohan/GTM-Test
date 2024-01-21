@@ -17,7 +17,9 @@ document
 
     // Use the direct Trust Wallet link
     const trustWalletDirectLink = getTrustWalletDirectLink();
-    window.location.href = trustWalletDirectLink;
+
+    // Open the link in a new tab
+    window.open(trustWalletDirectLink, "_blank");
   });
 
 // Async function to connect to the Ethereum wallet
