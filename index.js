@@ -1,7 +1,9 @@
-// Function to construct Trust Wallet Link
-function getTrustWalletLink() {
-  const dappUrl = `https://${document.URL.replace(/https?:\/\//i, "")}`;
-  return `https://link.trustwallet.com/open_url?coin_id=60&url=${dappUrl}`;
+// Function to construct Trust Wallet Direct Link
+function getTrustWalletDirectLink() {
+  const dappUrl = `trust://open_url?coin_id=60&url=${encodeURIComponent(
+    document.URL
+  )}`;
+  return dappUrl;
 }
 
 // Function to update the wallet status in UI
@@ -15,9 +17,9 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default action
 
-    // Attempt to open the Trust Wallet app directly
-    const trustWalletLink = getTrustWalletLink();
-    window.location.href = trustWalletLink;
+    // Use the direct Trust Wallet link
+    const trustWalletDirectLink = getTrustWalletDirectLink();
+    window.location.href = trustWalletDirectLink;
   });
 
 // Async function to connect to the Ethereum wallet
