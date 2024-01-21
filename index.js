@@ -12,11 +12,13 @@ function updateWalletStatus(message) {
 // Event listener for the TrustWallet connection
 document
   .getElementById("connect-trustwallet")
-  .addEventListener("click", function () {
-    alert(
-      "Redirecting to Trust Wallet. Please follow the instructions in the app to connect."
-    );
-    window.location = getTrustWalletLink();
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default action (which might be opening a browser window)
+
+    // Confirm with the user before redirecting
+    if (confirm("Open Trust Wallet?")) {
+      window.location = getTrustWalletLink();
+    }
   });
 
 // Async function to connect to the Ethereum wallet
