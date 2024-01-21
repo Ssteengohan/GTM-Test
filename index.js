@@ -1,8 +1,6 @@
 // Function to construct Trust Wallet Direct Link
 function getTrustWalletDirectLink() {
-  const dappUrl = `trust://open_url?coin_id=60&url=${encodeURIComponent(
-    document.URL
-  )}`;
+  const dappUrl = "https://link.trustwallet.com/browser_enable";
   return dappUrl;
 }
 
