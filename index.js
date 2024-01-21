@@ -1,17 +1,25 @@
+// Function to construct Trust Wallet Link
+function getTrustWalletLink() {
+  const dappUrl = `https://${document.URL.replace(/https?:\/\//i, "")}`;
+  return `https://link.trustwallet.com/open_url?coin_id=60&url=${dappUrl}`;
+}
+
+// Function to update the wallet status in UI
+function updateWalletStatus(message) {
+  document.getElementById("walletStatus").innerText = message;
+}
+
+// Event listener for the TrustWallet connection
 document
   .getElementById("connect-trustwallet")
   .addEventListener("click", function () {
-    // Optional: Alert the user that they are being redirected
     alert(
       "Redirecting to Trust Wallet. Please follow the instructions in the app to connect."
     );
-
-    const dappUrl = `https://${document.URL.replace(/https?:\/\//i, "")}`;
-    const trustWalletLink = `https://link.trustwallet.com/open_url?coin_id=60&url=${dappUrl}`;
-    window.location = trustWalletLink;
+    window.location = getTrustWalletLink();
   });
-let web3;
 
+// Async function to connect to the Ethereum wallet
 async function connectWallet() {
   if (window.ethereum) {
     try {
@@ -19,28 +27,14 @@ async function connectWallet() {
         method: "eth_requestAccounts",
       });
       const account = accounts[0];
-
-      // Using alert to show connected account
       alert("Connected account: " + account);
-
-      // Optionally, update the UI element with the account address or status
-      document.getElementById(
-        "walletStatus"
-      ).innerText = `Connected: ${account}`;
+      updateWalletStatus(`Connected: ${account}`);
     } catch (error) {
-      // Alert user of the error
       alert("User denied account access");
-
-      // Optionally, update the UI with the error message
-      document.getElementById("walletStatus").innerText =
-        "Connection failed: User denied account access";
+      updateWalletStatus("Connection failed: User denied account access");
     }
   } else {
-    // Alert user that Ethereum object was not found
     alert("Non-Ethereum browser detected. Consider installing Trust Wallet!");
-
-    // Optionally, update the UI with the message
-    document.getElementById("walletStatus").innerText =
-      "Non-Ethereum browser detected";
+    updateWalletStatus("Non-Ethereum browser detected");
   }
 }
