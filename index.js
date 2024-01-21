@@ -1,12 +1,8 @@
 document
   .getElementById("connect-trustwallet")
   .addEventListener("click", function () {
-    // Optional: Alert the user that they are being redirected
-    alert(
-      "Redirecting to Trust Wallet. Please follow the instructions in the app to connect."
-    );
+ 
 
-    const dappUrl = `https://${document.URL.replace(/https?:\/\//i, "")}`;
     const trustWalletLink = `https://link.trustwallet.com/open_url?coin_id=60&url=${dappUrl}`;
     window.location = trustWalletLink;
   });
@@ -20,8 +16,6 @@ async function connectWallet() {
       });
       const account = accounts[0];
 
-      // Using alert to show connected account
-      alert("Connected account: " + account);
 
       // Optionally, update the UI element with the account address or status
       document.getElementById(
