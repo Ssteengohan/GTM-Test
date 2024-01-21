@@ -30,10 +30,14 @@ async function connectWallet() {
       alert("Connected account: " + account);
       updateWalletStatus(`Connected: ${account}`);
     } catch (error) {
+      alert("User denied account access");
+      updateWalletStatus("Connection failed: User denied account access");
     }
   } else {
     // Prompt the user to open Trust Wallet app or install the browser extension
-
+    alert(
+      "Please open your Trust Wallet app or install the browser extension."
+    );
     updateWalletStatus("Trust Wallet not detected");
   }
 }
