@@ -15,11 +15,8 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default action
 
-    // Use the direct Trust Wallet link
-    const trustWalletDirectLink = getTrustWalletDirectLink();
-
-    // Open the link in a new tab
-    window.open(trustWalletDirectLink, "_blank");
+    // Call the function to connect the wallet
+    connectWallet();
   });
 
 // Async function to connect to the Ethereum wallet
@@ -33,11 +30,10 @@ async function connectWallet() {
       alert("Connected account: " + account);
       updateWalletStatus(`Connected: ${account}`);
     } catch (error) {
-      alert("User denied account access");
-      updateWalletStatus("Connection failed: User denied account access");
     }
   } else {
-    alert("Non-Ethereum browser detected. Consider installing Trust Wallet!");
-    updateWalletStatus("Non-Ethereum browser detected");
+    // Prompt the user to open Trust Wallet app or install the browser extension
+
+    updateWalletStatus("Trust Wallet not detected");
   }
 }
