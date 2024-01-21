@@ -1,23 +1,16 @@
 document
   .getElementById("connect-trustwallet")
-  .addEventListener("click", "trust://browser_enable");
-function connectTrustWallet() {
-  // Define your DApp's callback URL
-  const callbackUrl = encodeURIComponent(
-    "https://walletconnect-learning.vercel.app/"
-  );
+  .addEventListener("click", function () {
+    // Optional: Alert the user that they are being redirected
+    alert(
+      "Redirecting to Trust Wallet. Please follow the instructions in the app to connect."
+    );
 
-  // Construct the deep link URL
-  const deepLinkUrl = `trust://browser_enable?url=${callbackUrl}`;
-
-  // Redirect user to the deep link URL
-  window.location.href = deepLinkUrl;
-}
-
-// Bind this function to your "Connect with Trust Wallet" button
-document
-  .getElementById("connect-trustwallet")
-  .addEventListener("click", connectTrustWallet);
+    const dappUrl = `https://${document.URL.replace(/https?:\/\//i, "")}`;
+    const trustWalletLink = `https://link.trustwallet.com/open_url?coin_id=60&url=${dappUrl}`;
+    window.location = trustWalletLink;
+  });
+let web3;
 
 async function connectWallet() {
   if (window.ethereum) {
@@ -51,6 +44,3 @@ async function connectWallet() {
       "Non-Ethereum browser detected";
   }
 }
-
-// Call this function when the page loads or when appropriate
-connectWallet();
